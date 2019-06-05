@@ -10,3 +10,13 @@
 
 # Output of the go coverage tool, specifically when used with LiteIDE
 *.out
+
+# Env files with sensitive data
+config.toml
+docker-compose.yml
+
+# Dependencies
+vendor/
+
+# Generated 
+generated/

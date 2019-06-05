@@ -1,0 +1,83 @@
+type User {
+  id: ID! @id
+  username: String! @unique
+  password: String!
+  email: String! @unique
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+  profile: Profile @relation(onDelete: CASCADE)
+  posts: [Post!]! @relation(onDelete: CASCADE)
+  pages: [Page!]! @relation(onDelete: CASCADE)
+  roles: [Role!]! @relation(link: TABLE)
+}
+
+type Profile {
+  id: ID! @id
+  user: User! @relation(link: INLINE)
+  firstName: String!
+  lastName: String!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+  picture: Asset @relation(link: INLINE)
+}
+
+type Role {
+  id: ID! @id
+  name: String! 
+  users: [User!]!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+type Asset {
+  id: ID! @id
+  url: String! @unique
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+type Post {
+  id: ID! @id
+  author: User! @relation(link: INLINE)
+  title: String! @unique
+  tagline: String!
+  excerpt: String!
+  content: Json!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+  featuredImage: Asset @relation(link: INLINE)
+  tags: [Tag!]! @relation(link: TABLE)
+}
+
+type Page {
+  id: ID! @id
+  author: User! @relation(link: INLINE)
+  title: String! @unique
+  content: Json!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+  featuredImage: Asset @relation(link: INLINE)
+}
+
+type Tag {
+  id: ID! @id
+  name: String! @unique
+  description: String
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+  featuredImage: Asset @relation(link: INLINE)
+}
+
+enum TechCategory {
+  FRONT_END
+  BACK_END
+  FRAMEWORK
+  STORAGE
+  UNCATEGORIZED
+}
+
+type Tech {
+  id: ID! @id
+  name: String!
+  category: TechCategory! @default(value: UNCATEGORIZED)
+}
