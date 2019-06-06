@@ -63,14 +63,6 @@
   version = "v1.1.6"
 
 [[projects]]
-  digest = "1:31e761d97c76151dde79e9d28964a812c46efc5baee4085b86f68f0c654450de"
-  name = "github.com/konsorten/go-windows-terminal-sequences"
-  packages = ["."]
-  pruneopts = "UT"
-  revision = "f55edac94c9bbba5d6182a4be46d86a2c9b5b50e"
-  version = "v1.0.2"
-
-[[projects]]
   digest = "1:d86c8eb7189141c0e902fd8dcf6e79b8feea523978018e20f2ac794626ad0f63"
   name = "github.com/machinebox/graphql"
   packages = ["."]
@@ -133,14 +125,6 @@
   packages = ["."]
   pruneopts = "UT"
   revision = "68a1f9908416aebb5bbb0bc3cdec3321d74cb7af"
-
-[[projects]]
-  digest = "1:04457f9f6f3ffc5fea48e71d62f2ca256637dee0a04d710288e27e05c8b41976"
-  name = "github.com/sirupsen/logrus"
-  packages = ["."]
-  pruneopts = "UT"
-  revision = "839c75faf7f98a33d445d181f3018b5c3409a45e"
-  version = "v1.4.2"
 
 [[projects]]
   digest = "1:ac83cf90d08b63ad5f7e020ef480d319ae890c208f8524622a2f3136e2686b02"
@@ -213,7 +197,6 @@
     "github.com/gin-gonic/gin",
     "github.com/machinebox/graphql",
     "github.com/prisma/prisma-client-lib-go",
-    "github.com/sirupsen/logrus",
     "github.com/stretchr/testify/assert",
     "github.com/stretchr/testify/mock",
     "golang.org/x/crypto/bcrypt",
