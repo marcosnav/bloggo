@@ -20,3 +20,6 @@ vendor/
 
 # Generated 
 generated/
+
+# Coverage with gotestsum
+coverage.xml
