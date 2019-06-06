@@ -1,35 +1,59 @@
 package config
 
 import (
-	"io/ioutil"
+	"errors"
+	"fmt"
 	"reflect"
+	"sync"
 
 	"github.com/BurntSushi/toml"
+
+	errmsg "bloggo/errors"
+	I "bloggo/interfaces"
 )
 
-type Config struct {
+const configFileName string = "config.toml"
+
+// Using config as a Singleton, single source of truth for config fields
+// implementing sync.Once to prevent multi-thread race conditions
+type config struct {
 	APP_PORT   string
 	APP_SECRET string
 }
 
-var config Config
+var once sync.Once
+var instance config
 
-func init() {
-	configFile, err := ioutil.ReadFile("config.toml")
-	if err != nil {
-		// Handle error
+func readAndDecodeFile(fh I.FileHandler) error {
+	configData, readError := fh.Read(configFileName)
+	if readError != nil {
+		return readError
 	}
-	configData := string(configFile)
-	if _, err := toml.Decode(configData, &config); err != nil {
-		// handle error
+	if _, err := toml.Decode(configData, &instance); err != nil {
+		return errors.New(errmsg.UnparsableConfigFile)
 	}
+	return nil
 }
 
-func Get(field string) string {
-	r := reflect.ValueOf(config)
+// Load configuration from config.toml
+func LoadWith(fh I.FileHandler) error {
+	var loadError error = nil
+	// Thread safe, prevent race condition
+	once.Do(func() {
+		err := readAndDecodeFile(fh)
+		if err != nil {
+			loadError = err
+		}
+	})
+	return loadError
+}
+
+// Get config field
+func Get(field string) (string, error) {
+	r := reflect.ValueOf(instance)
 	f := reflect.Indirect(r).FieldByName(field)
 	if !f.IsValid() {
-		// Handle invalid/unexistent config field
+		return "", fmt.Errorf(errmsg.UnexistentConfigField, field)
 	}
-	return f.String()
+	return f.String(), nil
 }

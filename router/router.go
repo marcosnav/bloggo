@@ -2,7 +2,7 @@ package router
 
 import (
 	"github.com/gin-gonic/gin"
-	ctrl "marcosn.com/controllers"
+	ctrl "bloggo/controllers"
 )
 
 func setupControllers(router *gin.Engine) {
