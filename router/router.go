@@ -1,7 +1,7 @@
 package router
 
 import (
-	ctrl "bloggo/controller"
+	ctrl "github.com/marcosnav/bloggo/controller"
 
 	"github.com/gin-gonic/gin"
 )

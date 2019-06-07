@@ -5,7 +5,7 @@ import (
 	"io/ioutil"
 	"sync"
 
-	errmsg "bloggo/error"
+	errmsg "github.com/marcosnav/bloggo/error"
 )
 
 // Using a single instance of fileHandler (Singleton), as the only provider for file handling

@@ -9,8 +9,8 @@ import (
 
 	"github.com/BurntSushi/toml"
 
-	errmsg "bloggo/error"
-	"bloggo/tool"
+	errmsg "github.com/marcosnav/bloggo/error"
+	"github.com/marcosnav/bloggo/tool"
 )
 
 const configFileName string = "config.toml"

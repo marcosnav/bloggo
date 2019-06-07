@@ -4,7 +4,7 @@ package controller
 import (
 	"net/http"
 
-	"bloggo/tool"
+	"github.com/marcosnav/bloggo/tool"
 
 	"github.com/gin-gonic/gin"
 )

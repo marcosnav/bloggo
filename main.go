@@ -1,9 +1,9 @@
 package main
 
 import (
-	"bloggo/config"
-	"bloggo/router"
-	"bloggo/tool"
+	"github.com/marcosnav/bloggo/config"
+	"github.com/marcosnav/bloggo/router"
+	"github.com/marcosnav/bloggo/tool"
 )
 
 // TODO: Move application to its own module/package and use DI to pass config and router
