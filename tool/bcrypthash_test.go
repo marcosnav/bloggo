@@ -1,9 +1,7 @@
-package util
+package tool
 
 import (
 	"testing"
-
-	I "bloggo/interfaces"
 
 	"github.com/stretchr/testify/assert"
 )
@@ -12,7 +10,7 @@ var hash string
 
 func TestNewHasher(t *testing.T) {
 	hasher := BcryptHash{}
-	assert.Implements(t, (*I.BcryptHasher)(nil), hasher, "should implement BcryptHasher")
+	assert.Implements(t, (*BcryptHasher)(nil), hasher, "should implement BcryptHasher")
 }
 
 func TestGenerate(t *testing.T) {

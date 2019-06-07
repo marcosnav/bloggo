@@ -1,9 +1,7 @@
-package util
+package tool
 
 import (
 	"testing"
-
-	I "bloggo/interfaces"
 
 	"github.com/stretchr/testify/assert"
 )
@@ -12,7 +10,7 @@ var token string
 
 func TestNewJWT(t *testing.T) {
 	jwt := JWT{Key: "secret"}
-	assert.Implements(t, (*I.TokenProvider)(nil), jwt, "should implement TokenProvider")
+	assert.Implements(t, (*TokenProvider)(nil), jwt, "should implement TokenProvider")
 }
 
 func TestNewToken(t *testing.T) {

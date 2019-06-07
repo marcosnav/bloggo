@@ -1,15 +1,16 @@
-package controllers
+// Package providing the controllers that will act as the handlers for upcoming outside requests
+package controller
 
 import (
 	"net/http"
 
-	util "bloggo/util"
+	"bloggo/tool"
 
 	"github.com/gin-gonic/gin"
 )
 
 func Index(c *gin.Context) {
-	jwt := util.JWT{Key: "secret"}
+	jwt := tool.JWT{Key: "secret"}
 	token, _ := jwt.NewToken()
 
 	c.JSON(http.StatusOK, gin.H{

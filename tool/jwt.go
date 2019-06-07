@@ -1,4 +1,4 @@
-package util
+package tool
 
 import (
 	"fmt"
@@ -7,8 +7,14 @@ import (
 	jwt "github.com/dgrijalva/jwt-go"
 )
 
+// JWT provider
 type JWT struct {
 	Key string
+}
+
+type TokenProvider interface {
+	NewToken() (string, error)
+	ValidateToken(token string) bool
 }
 
 // Generate new token with key(secret)

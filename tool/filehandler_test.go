@@ -1,16 +1,14 @@
-package util
+package tool
 
 import (
 	"testing"
-
-	I "bloggo/interfaces"
 
 	"github.com/stretchr/testify/assert"
 )
 
 func TestLoadFileHandler(t *testing.T) {
 	fh := LoadFileHandler()
-	assert.Implements(t, (*I.FileHandler)(nil), fh, "should implement FileHandler")
+	assert.Implements(t, (*FileHandler)(nil), fh, "should implement FileHandler")
 }
 
 func TestRead(t *testing.T) {

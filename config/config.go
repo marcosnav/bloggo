@@ -1,3 +1,4 @@
+// Package that provides the application configuration in a Singleton manner
 package config
 
 import (
@@ -8,8 +9,8 @@ import (
 
 	"github.com/BurntSushi/toml"
 
-	errmsg "bloggo/errors"
-	I "bloggo/interfaces"
+	errmsg "bloggo/error"
+	"bloggo/tool"
 )
 
 const configFileName string = "config.toml"
@@ -24,7 +25,7 @@ type config struct {
 var once sync.Once
 var instance config
 
-func readAndDecodeFile(fh I.FileHandler) error {
+func readAndDecodeFile(fh tool.FileHandler) error {
 	configData, readError := fh.Read(configFileName)
 	if readError != nil {
 		return readError
@@ -36,7 +37,7 @@ func readAndDecodeFile(fh I.FileHandler) error {
 }
 
 // Load configuration from config.toml
-func LoadWith(fh I.FileHandler) error {
+func LoadWith(fh tool.FileHandler) error {
 	var loadError error = nil
 	// Thread safe, prevent race condition
 	once.Do(func() {

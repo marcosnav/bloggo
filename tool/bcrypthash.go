@@ -1,4 +1,4 @@
-package util
+package tool
 
 import (
 	"golang.org/x/crypto/bcrypt"
@@ -6,6 +6,11 @@ import (
 
 // Hash struct
 type BcryptHash struct{}
+
+type BcryptHasher interface {
+	Generate(password string) (string, error)
+	Compare(hash string, password string) error
+}
 
 // Generate bcrypt hash for given password
 func (c BcryptHash) Generate(password string) (string, error) {

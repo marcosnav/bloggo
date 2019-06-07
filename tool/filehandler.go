@@ -1,16 +1,20 @@
-package util
+package tool
 
 import (
 	"fmt"
 	"io/ioutil"
 	"sync"
 
-	errmsg "bloggo/errors"
+	errmsg "bloggo/error"
 )
 
 // Using a single instance of fileHandler (Singleton), as the only provider for file handling
 // implementing sync.Once to prevent multi-thread race conditions
 type fileHandler struct{}
+
+type FileHandler interface {
+	Read(file string) (string, error)
+}
 
 var once sync.Once
 var instance fileHandler

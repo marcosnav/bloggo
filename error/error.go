@@ -1,4 +1,4 @@
-package errors
+package error
 
 const UnreadableFile string = "Unable to read file %v"
 const UnparsableConfigFile string = "The config.toml file could not be parsed"

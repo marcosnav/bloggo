@@ -4,7 +4,7 @@ import (
 	"errors"
 	"testing"
 
-	errmsg "bloggo/errors"
+	errmsg "bloggo/error"
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"

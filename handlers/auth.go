@@ -1,5 +1,0 @@
-package handlers
-
-func AuthRequired() {
-
-}

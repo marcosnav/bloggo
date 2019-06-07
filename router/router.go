@@ -1,8 +1,9 @@
 package router
 
 import (
+	ctrl "bloggo/controller"
+
 	"github.com/gin-gonic/gin"
-	ctrl "bloggo/controllers"
 )
 
 func setupControllers(router *gin.Engine) {
